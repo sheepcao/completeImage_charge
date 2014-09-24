@@ -104,7 +104,7 @@
     
     [goAppstore addTarget:self action:@selector(gotoStore) forControlEvents:UIControlEventTouchUpInside];
 //    new version
-//    [self.view addSubview:goAppstore];
+    [self.view addSubview:goAppstore];
     [self.view bringSubviewToFront:goAppstore];
     
     [submitEmail addTarget:self action:@selector(emailMe) forControlEvents:UIControlEventTouchUpInside];

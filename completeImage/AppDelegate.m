@@ -25,13 +25,13 @@
 
     
     [ShareSDK registerApp:@"2a5d674d9a31"];
-    [ShareSDK connectWeChatWithAppId:@"wx4e1ffebe5397b9ef" wechatCls:[WXApi class]];
+    [ShareSDK connectWeChatWithAppId:@"wx1fc1193034aff0b3" wechatCls:[WXApi class]];
 //    [ShareSDK  connectSinaWeiboWithAppKey:@"2794760105"
 //                                appSecret:@"31dbf958ccc3fa37f6e99cf0ec643c5e"
 //                              redirectUri:@"https://www.weibo.com/"
 //                              weiboSDKCls:[WeiboSDK class]];
-    [ShareSDK connectSinaWeiboWithAppKey:@"2794760105"
-                               appSecret:@"31dbf958ccc3fa37f6e99cf0ec643c5e"
+    [ShareSDK connectSinaWeiboWithAppKey:@"95235141"
+                               appSecret:@"2d339cf5298113495027af71a57b1ace"
                              redirectUri:@"https://api.weibo.com/oauth2/default.html"];
 
     
@@ -44,8 +44,8 @@
                      tencentOAuthCls:[TencentOAuth class]];
     
     
-    [ShareSDK connectFacebookWithAppKey:@"746495262075375"
-                              appSecret:@"7f7416a1a6d46dee6999dca7d242e566"];
+    [ShareSDK connectFacebookWithAppKey:@"740494742652429"
+                              appSecret:@"463d6c586ea5786af2afdecada8c7cb2"];
     
     
     

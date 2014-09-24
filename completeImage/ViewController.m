@@ -161,7 +161,7 @@ bool levelLock[bigLevel];
     
     [self.view addSubview:self.levelTitle];
     
-    [self.shareApp setEnabled:NO];
+    [self.shareApp setEnabled:YES];
 //    [self.view addSubview:self.movingSnail];
 
 
@@ -607,7 +607,7 @@ bool levelLock[bigLevel];
                                        defaultContent: nil
                                                 image:[ShareSDK pngImageWithImage:imageShare]
                                                 title:message
-                                                  url:@"http://itunes.apple.com/cn/app/daysinline/id844914780?mt=8"
+                                                 url:@"https://itunes.apple.com/cn/app/baby-match!/id915444234?l=en&mt=8"
                                           description: testShare
                                             mediaType:SSPublishContentMediaTypeNews];
     

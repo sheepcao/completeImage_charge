@@ -178,7 +178,7 @@
     
     //    new version
 
-//    [self.view addSubview:self.share];
+    [self.view addSubview:self.share];
     [self.share setHidden:YES];
     [self.view addSubview:self.retakeButton];
     [self.view addSubview:self.savePic];
@@ -739,7 +739,7 @@
         message = @"宝贝,拼吧！";
     }else
     {
-        message = @"BabyMatch";
+        message = @"Baby Match!";
     }
     id<ISSContent> publishContent = [ShareSDK content:message
                                        defaultContent:@""
