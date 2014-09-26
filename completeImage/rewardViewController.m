@@ -736,16 +736,16 @@
     NSString *message;
     
     if ([CommonUtility isSystemLangChinese]) {
-        message = @"宝贝,拼吧！";
+        message = @"宝贝,拼吧！\n下载地址 : https://itunes.apple.com/cn/app/baby-match!/id915444234?l=en&mt=8";
     }else
     {
-        message = @"Baby Match!";
+        message = @"Baby Match!\nDownload : https://itunes.apple.com/cn/app/baby-match!/id915444234?l=en&mt=8";
     }
     id<ISSContent> publishContent = [ShareSDK content:message
                                        defaultContent:@""
                                                 image:[ShareSDK pngImageWithImage:imageShare]
                                                 title:@"Share"
-                                                  url:@"http://www.sharesdk.cn"
+                                                  url:@"https://itunes.apple.com/cn/app/baby-match!/id915444234?l=en&mt=8"
                                           description:message
                                             mediaType:SSPublishContentMediaTypeImage];
     

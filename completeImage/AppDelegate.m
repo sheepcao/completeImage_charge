@@ -38,11 +38,12 @@
 
     
     [ShareSDK connectQQWithAppId:@"1102040569" qqApiCls:[QQApi class]];
-    [ShareSDK connectQZoneWithAppKey:@"1102040569"
-                           appSecret:@"Mwz2RaYqfPrB2wit"
-                   qqApiInterfaceCls:[QQApiInterface class]
-                     tencentOAuthCls:[TencentOAuth class]];
-    
+//    [ShareSDK connectQZoneWithAppKey:@"1102040569"
+//                           appSecret:@"Mwz2RaYqfPrB2wit"
+//                   qqApiInterfaceCls:[QQApiInterface class]
+//                     tencentOAuthCls:[TencentOAuth class]];
+//    [ShareSDK connectQZoneWithAppKey:@"1102040569"
+//appSecret:@"Mwz2RaYqfPrB2wit"];
     
     [ShareSDK connectFacebookWithAppKey:@"740494742652429"
                               appSecret:@"463d6c586ea5786af2afdecada8c7cb2"];

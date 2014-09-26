@@ -594,12 +594,12 @@ bool levelLock[bigLevel];
     NSString *testShare = nil;
     if ([CommonUtility isSystemLangChinese]) {
         message = @"宝贝,拼吧！";
-        testShare = @"赶快下载《宝贝，拼吧！》\n来自星星的宝宝就是你！";
+        testShare = @"赶快下载《宝贝，拼吧！》\n来自星星的宝宝就是你！\nhttps://itunes.apple.com/cn/app/baby-match!/id915444234?l=en&mt=8";
         
     }else
     {
         message = @"BabyMatch!";
-        testShare = @"Download “BabyMatch！”.\n You’re the “Baby from the Star!";
+        testShare = @"Download “BabyMatch！”.\n You’re the “Baby from the Star!\nhttps://itunes.apple.com/cn/app/baby-match!/id915444234?l=en&mt=8";
     }
     
         //构造分享内容

@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "completeImage/AppDelegate.m"
-            timestampString = "432355803.422501"
+            timestampString = "433343409.304065"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
             landmarkName = "-applicationWillEnterForeground:"
             landmarkType = "5">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "completeImage/AppDelegate.m"
-            timestampString = "432355803.422501"
+            timestampString = "433343409.304065"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "-applicationDidEnterBackground:"
             landmarkType = "5">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "completeImage/AppDelegate.m"
-            timestampString = "432355803.422501"
+            timestampString = "433343409.304065"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "-application:didFinishLaunchingWithOptions:"
             landmarkType = "5">
          </BreakpointContent>
