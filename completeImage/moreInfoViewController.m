@@ -186,7 +186,7 @@
 
 -(void)emailMe
 {
-    [CommonUtility tapSound];
+   [CommonUtility tapSound:@"tapSound" withType:@"wav"];
 
     MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
     [picker.view setFrame:CGRectMake(0,20 , 320, self.view.frame.size.height-20)];
@@ -234,7 +234,7 @@
 
 -(void)gotoStore
 {
-    [CommonUtility tapSound];
+    [CommonUtility tapSound:@"tapSound" withType:@"wav"];
 
     if([[self currentLanguage] compare:@"zh-Hans" options:NSCaseInsensitiveSearch]==NSOrderedSame || [[self currentLanguage] compare:@"zh-Hant" options:NSCaseInsensitiveSearch]==NSOrderedSame)
     {

@@ -25,6 +25,9 @@
 @end
 
 @implementation ViewController
+NSInteger resultNum;
+UIImageView *wrongAnswer;
+UIButton *cancelInAlert;
 
 bool levelLock[bigLevel];
 
@@ -55,6 +58,7 @@ bool levelLock[bigLevel];
     }
     
     isAnimating =NO;
+    resultNum = -1;
 
     
     sharePic = [[NSArray alloc] initWithObjects:@"animalShare",@"sportShare",@"foodShare",@"livingGoodShare",@"plantShare", nil];
@@ -139,7 +143,7 @@ bool levelLock[bigLevel];
     [self.food addTarget:self action:@selector(foodBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.sport addTarget:self action:@selector(sportBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.livingGood addTarget:self action:@selector(livingGoodBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [self.shareApp addTarget:self action:@selector(shareFunc) forControlEvents:UIControlEventTouchUpInside];
+    [self.shareApp addTarget:self action:@selector(shareAlert) forControlEvents:UIControlEventTouchUpInside];
     [self.aboutUs addTarget:self action:@selector(aboutUsTapped) forControlEvents:UIControlEventTouchUpInside];
     [self.moreFun addTarget:self action:@selector(moreInfo) forControlEvents:UIControlEventTouchUpInside];
 
@@ -418,6 +422,7 @@ bool levelLock[bigLevel];
     [tmpCustomView addSubview:self.lockedInAlert];
     [tmpCustomView addSubview:self.cancelInAlert];
     
+    
     CustomIOS7AlertView *alert = [[CustomIOS7AlertView alloc] init];
     [alert setButtonTitles:[NSMutableArray arrayWithObjects:nil]];
     alert.backgroundColor = [UIColor whiteColor];
@@ -566,11 +571,103 @@ bool levelLock[bigLevel];
 //
 //}
 //
+-(void)shareAlert
+{
+   [CommonUtility tapSound:@"selectLevel" withType:@"mp3"];
+    
+    UIView *tmpCustomView = [[UIView alloc] initWithFrame:CGRectMake(0, 0 , 300, 208)];
+    UIImageView *title = [[UIImageView alloc] initWithFrame:CGRectMake(77, 15, 146, 47)];
+
+    
+    wrongAnswer = [[UIImageView alloc] initWithFrame:CGRectMake(45, 145, 110, 40)];
+   
+    
+    cancelInAlert = [[UIButton alloc] initWithFrame:CGRectMake(170, 145, 90, 47)];
+    
+    tmpCustomView.backgroundColor = [UIColor colorWithPatternImage:    [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"alertBackground" ofType:@"png"]]];
+    
+    if ([CommonUtility isSystemLangChinese]) {
+        
+        [cancelInAlert setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"cancelButton" ofType:@"png"]] forState:UIControlStateNormal];
+        [wrongAnswer setImage:[UIImage imageNamed:@"错误答案"]];
+        [title setImage:[UIImage imageNamed:@"家长控制"]];
+        
+        
+        
+    }else
+    {
+       [cancelInAlert setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"en-cancelButton" ofType:@"png"]] forState:UIControlStateNormal];
+        [wrongAnswer setImage:[UIImage imageNamed:@"wronganswer"]];
+        [title setImage:[UIImage imageNamed:@"Grown-upsOnly"]];
+    }
+    
+//    [lockedInAlert addTarget:self action:@selector(shareFunc) forControlEvents:UIControlEventTouchUpInside];
+    [cancelInAlert addTarget:self action:@selector(closeAlert) forControlEvents:UIControlEventTouchUpInside];
+    
+
+    
+    UILabel *numberA = [[UILabel alloc] initWithFrame:CGRectMake(40, 80, 47, 47)];
+    UIImageView *plus = [[UIImageView alloc] initWithFrame:CGRectMake(85, 83.5, 40, 40)];
+    [plus setImage:[UIImage imageNamed:@"+"]];
+    
+    UILabel *numberB = [[UILabel alloc] initWithFrame:CGRectMake(130, 80, 47, 47)];
+    UIImageView *equals = [[UIImageView alloc] initWithFrame:CGRectMake(175, 83.5, 40, 40)];
+    [equals setImage:[UIImage imageNamed:@"="]];
+    UITextField *answer = [[UITextField alloc] initWithFrame:CGRectMake(220, 80, 47, 47)];
+    numberA.font = [UIFont fontWithName:@"SegoePrint" size:30];
+    [numberA setTextColor:[UIColor blueColor]];
+    numberA.textAlignment = NSTextAlignmentCenter;
+    numberB.font = [UIFont fontWithName:@"SegoePrint" size:30];
+    [numberB setTextColor:[UIColor brownColor]];
+    numberB.textAlignment = NSTextAlignmentCenter;
+    answer.backgroundColor = [UIColor whiteColor];
+    answer.textAlignment = NSTextAlignmentCenter;
+    [answer setTextColor:[UIColor purpleColor]];
+    answer.font = [UIFont fontWithName:@"SegoePrint" size:30];
+    [answer setBackground:[UIImage imageNamed:@"border"]];
+    answer.delegate = self;
+    answer.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    
+
+    unsigned int randomA = arc4random()%20;
+    unsigned int randomB = arc4random()%20;
+    resultNum = randomA+randomB;
+    [numberA setText:[NSString stringWithFormat:@"%d",randomA]];
+    [numberB setText:[NSString stringWithFormat:@"%d",randomB]];
+    
+//    [tmpCustomView addSubview:lockedInAlert];
+    [tmpCustomView addSubview:title];
+    [tmpCustomView addSubview:cancelInAlert];
+//    [cancelInAlert setHidden:YES];
+    [tmpCustomView addSubview:wrongAnswer];
+    [wrongAnswer setHidden:YES];
+    [tmpCustomView addSubview:numberA];
+    [tmpCustomView addSubview:numberB];
+    [tmpCustomView addSubview:plus];
+    [tmpCustomView addSubview:equals];
+    [tmpCustomView addSubview:answer];
+
+    
+    CustomIOS7AlertView *alert = [[CustomIOS7AlertView alloc] init];
+    [alert setButtonTitles:[NSMutableArray arrayWithObjects:nil]];
+    alert.backgroundColor = [UIColor whiteColor];
+    
+    [alert setContainerView:tmpCustomView];
+    
+    self.lockedAlert = alert;
+    [alert show];
+    
+    
+    
+}
+
+
+
 
 
 -(void)shareFunc
 {
-    [CommonUtility tapSound:@"selectLevel" withType:@"mp3"];
+    
 
     
     id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
@@ -580,51 +677,52 @@ bool levelLock[bigLevel];
                                                authManagerViewDelegate:nil];
     
     [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
-                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"阿土鳖"],
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"clcstudio@163.com"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
-                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
-                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
 
 
     
     
-    UIImage *imageShare = [UIImage imageNamed:@"level9-2"];
+    UIImage *imageShare = [UIImage imageNamed:@"appIcon"];
     NSString *message = nil;
     NSString *testShare = nil;
     if ([CommonUtility isSystemLangChinese]) {
-        message = @"宝贝,拼吧！";
-        testShare = @"赶快下载《宝贝，拼吧！》\n来自星星的宝宝就是你！\nhttps://itunes.apple.com/cn/app/baby-match!/id915444234?l=en&mt=8";
+        message = @"宝贝,拼吧！\n亲子游戏悄然来袭！";
+        testShare = @"赶快下载《宝贝，拼吧！》\n来自星星的宝宝就是你！\nhttps://itunes.apple.com/cn/app/baby-match!/id915444234?l=zh&mt=8";
         
     }else
     {
-        message = @"BabyMatch!";
-        testShare = @"Download “BabyMatch！”.\n You’re the “Baby from the Star!\nhttps://itunes.apple.com/cn/app/baby-match!/id915444234?l=en&mt=8";
+        message = @"BabyMatch!\nA fantastic parent-child game.";
+        testShare = @"Download <BabyMatch!>.\n You’re the Baby from the Star!\nhttps://itunes.apple.com/en/app/baby-match!/id915444234?l=en&mt=8";
     }
     
         //构造分享内容
    id<ISSContent> publishContent = [ShareSDK content: testShare
-                                       defaultContent: nil
+                                       defaultContent: testShare
                                                 image:[ShareSDK pngImageWithImage:imageShare]
                                                 title:message
-                                                 url:@"https://itunes.apple.com/cn/app/baby-match!/id915444234?l=en&mt=8"
+                                                 url:@"https://itunes.apple.com/cn/app/baby-match!/id915444234?l=zh&mt=8"
                                           description: testShare
                                             mediaType:SSPublishContentMediaTypeNews];
     
     [ShareSDK showShareActionSheet:nil
                          shareList:nil
                            content:publishContent
-                     statusBarTips:YES
+                     statusBarTips:NO
                        authOptions:authOptions
                       shareOptions: nil
                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
                                 if (state == SSResponseStateSuccess)
                                 {
-                                    NSLog(@"分享成功");
+                                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Tips" message:@"Success!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                                    [alert show];
                                 }
                                 else if (state == SSResponseStateFail)
                                 {
-                                    NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+                                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Tips" message:[NSString stringWithFormat:@"Failed! \n%@", [error errorDescription]]delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                                    [alert show];
+                                    
                                 }
                             }];
     
@@ -783,6 +881,37 @@ bool levelLock[bigLevel];
 -(NSUInteger)supportedInterfaceOrientations
 {
        return UIInterfaceOrientationMaskPortrait;
-    }
 
+}
+
+//- (void)textFieldDidEndEditing:(UITextField *)textField
+//{
+//    if([textField.text isEqualToString:[NSString stringWithFormat:@"%d",resultNum]])
+//    {
+//        [self.lockedAlert close];
+//        [self shareFunc];
+//        
+//    }else
+//    {
+//        [wrongAnswer setHidden:NO];
+//    }
+//    
+//}
+//
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if([textField.text isEqualToString:[NSString stringWithFormat:@"%d",resultNum]])
+    {
+        [self.lockedAlert close];
+        [self shareFunc];
+        
+    }else
+    {
+        [wrongAnswer setHidden:NO];
+        [cancelInAlert setHidden:NO];
+    }
+    [textField resignFirstResponder];
+    return YES;
+}
 @end

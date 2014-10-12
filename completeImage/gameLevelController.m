@@ -297,7 +297,7 @@ NSMutableArray  *arrayGif;
 
 -(void)goToLevelNow
 {
-    [CommonUtility tapSound];
+    [CommonUtility tapSound:@"tapSound" withType:@"wav"];
 
     moreInfoViewController *more = [[moreInfoViewController alloc] init];
     more.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
@@ -854,7 +854,7 @@ NSMutableArray  *arrayGif;
 - (IBAction)share {
     
     [CommonUtility tapSound];
-
+    [CommonUtility tapSound:@"tapSound" withType:@"wav"];
     
     sharePhotoViewController *myShare = [[sharePhotoViewController alloc] initWithNibName:@"sharePhotoViewController" bundle:nil];
     myShare.frontImageName = sharePic[(level-1)/10];

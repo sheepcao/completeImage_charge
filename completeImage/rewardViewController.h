@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "globalVar.h"
+#import "CustomIOS7AlertView.h"
 //#import "gameLevelController.h"
 
 
@@ -18,7 +19,11 @@
 
 
 
-@interface rewardViewController : UIViewController< UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface rewardViewController : UIViewController< UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>
+
+
+@property (strong, nonatomic) CustomIOS7AlertView *lockedAlert;
+
 @property (nonatomic, strong) AVAudioPlayer *myAudioPlayer;
 @property (strong, nonatomic) IBOutlet UIButton *goCamera;
 @property (strong, nonatomic)  UIImageView *backgroundImg;

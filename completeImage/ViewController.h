@@ -22,7 +22,7 @@
 
 
 
-@interface ViewController : UIViewController<killTimerDelegate/*GADInterstitialDelegate*/>
+@interface ViewController : UIViewController<killTimerDelegate/*GADInterstitialDelegate*/,UITextFieldDelegate>
 {
 	NSTimer *timer;
     NSTimer *ADTimer;

@@ -9,9 +9,14 @@
 #import <UIKit/UIKit.h>
 //#import "sharePhotoViewController.h"
 #import "globalVar.h"
+#import "CustomIOS7AlertView.h"
 //#import "AfterTakePicViewController.h"
 
-@interface sharePhotoViewController : UIViewController< UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIAlertViewDelegate>
+@interface sharePhotoViewController : UIViewController< UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIAlertViewDelegate,UITextFieldDelegate>
+
+
+
+@property (strong, nonatomic) CustomIOS7AlertView *lockedAlert;
 
 @property (strong, nonatomic)  UIImageView *frontImage;
 @property (strong, nonatomic)  UIImageView *backImage;
