@@ -28,6 +28,7 @@
 NSInteger resultNum;
 UIImageView *wrongAnswer;
 UIButton *cancelInAlert;
+UIView *tmpCustomView;
 
 bool levelLock[bigLevel];
 
@@ -145,7 +146,7 @@ bool levelLock[bigLevel];
     [self.livingGood addTarget:self action:@selector(livingGoodBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.shareApp addTarget:self action:@selector(shareAlert) forControlEvents:UIControlEventTouchUpInside];
     [self.aboutUs addTarget:self action:@selector(aboutUsTapped) forControlEvents:UIControlEventTouchUpInside];
-    [self.moreFun addTarget:self action:@selector(moreInfo) forControlEvents:UIControlEventTouchUpInside];
+    [self.moreFun addTarget:self action:@selector(moreInfoAlert) forControlEvents:UIControlEventTouchUpInside];
 
     
     [self.view addSubview: self.animal];
@@ -575,14 +576,14 @@ bool levelLock[bigLevel];
 {
    [CommonUtility tapSound:@"selectLevel" withType:@"mp3"];
     
-    UIView *tmpCustomView = [[UIView alloc] initWithFrame:CGRectMake(0, 0 , 300, 208)];
+    tmpCustomView = [[UIView alloc] initWithFrame:CGRectMake(0, 0 , 300, 208)];
     UIImageView *title = [[UIImageView alloc] initWithFrame:CGRectMake(77, 15, 146, 47)];
 
     
     wrongAnswer = [[UIImageView alloc] initWithFrame:CGRectMake(45, 145, 110, 40)];
    
     
-    cancelInAlert = [[UIButton alloc] initWithFrame:CGRectMake(170, 145, 90, 47)];
+    cancelInAlert = [[UIButton alloc] initWithFrame:CGRectMake(105, 145, 90, 47)];
     
     tmpCustomView.backgroundColor = [UIColor colorWithPatternImage:    [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"alertBackground" ofType:@"png"]]];
     
@@ -620,14 +621,14 @@ bool levelLock[bigLevel];
     numberB.font = [UIFont fontWithName:@"SegoePrint" size:30];
     [numberB setTextColor:[UIColor brownColor]];
     numberB.textAlignment = NSTextAlignmentCenter;
-    answer.backgroundColor = [UIColor whiteColor];
+    answer.backgroundColor = [UIColor clearColor];
     answer.textAlignment = NSTextAlignmentCenter;
     [answer setTextColor:[UIColor purpleColor]];
     answer.font = [UIFont fontWithName:@"SegoePrint" size:30];
     [answer setBackground:[UIImage imageNamed:@"border"]];
     answer.delegate = self;
     answer.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
-    
+    answer.tag = 0;
 
     unsigned int randomA = arc4random()%20;
     unsigned int randomB = arc4random()%20;
@@ -658,7 +659,7 @@ bool levelLock[bigLevel];
     [alert show];
     
     
-    
+    [answer becomeFirstResponder];
 }
 
 
@@ -738,7 +739,96 @@ bool levelLock[bigLevel];
     [self presentViewController:teamInfo animated:YES completion:Nil ];
     
 }
+-(void)moreInfoAlert
+{
+    [CommonUtility tapSound:@"selectLevel" withType:@"mp3"];
+    
+    tmpCustomView = [[UIView alloc] initWithFrame:CGRectMake(0, 0 , 300, 208)];
+    UIImageView *title = [[UIImageView alloc] initWithFrame:CGRectMake(77, 15, 146, 47)];
+    
+    
+    wrongAnswer = [[UIImageView alloc] initWithFrame:CGRectMake(45, 145, 110, 40)];
+    
+    
+    cancelInAlert = [[UIButton alloc] initWithFrame:CGRectMake(105, 145, 90, 47)];
+    
+    tmpCustomView.backgroundColor = [UIColor colorWithPatternImage:    [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"alertBackground" ofType:@"png"]]];
+    
+    if ([CommonUtility isSystemLangChinese]) {
+        
+        [cancelInAlert setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"cancelButton" ofType:@"png"]] forState:UIControlStateNormal];
+        [wrongAnswer setImage:[UIImage imageNamed:@"错误答案"]];
+        [title setImage:[UIImage imageNamed:@"家长控制"]];
+        
+        
+        
+    }else
+    {
+        [cancelInAlert setImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"en-cancelButton" ofType:@"png"]] forState:UIControlStateNormal];
+        [wrongAnswer setImage:[UIImage imageNamed:@"wronganswer"]];
+        [title setImage:[UIImage imageNamed:@"Grown-upsOnly"]];
+    }
+    
+    //    [lockedInAlert addTarget:self action:@selector(shareFunc) forControlEvents:UIControlEventTouchUpInside];
+    [cancelInAlert addTarget:self action:@selector(closeAlert) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    
+    UILabel *numberA = [[UILabel alloc] initWithFrame:CGRectMake(40, 80, 47, 47)];
+    UIImageView *plus = [[UIImageView alloc] initWithFrame:CGRectMake(85, 83.5, 40, 40)];
+    [plus setImage:[UIImage imageNamed:@"+"]];
+    
+    UILabel *numberB = [[UILabel alloc] initWithFrame:CGRectMake(130, 80, 47, 47)];
+    UIImageView *equals = [[UIImageView alloc] initWithFrame:CGRectMake(175, 83.5, 40, 40)];
+    [equals setImage:[UIImage imageNamed:@"="]];
+    UITextField *answer = [[UITextField alloc] initWithFrame:CGRectMake(220, 80, 47, 47)];
+    numberA.font = [UIFont fontWithName:@"SegoePrint" size:30];
+    [numberA setTextColor:[UIColor blueColor]];
+    numberA.textAlignment = NSTextAlignmentCenter;
+    numberB.font = [UIFont fontWithName:@"SegoePrint" size:30];
+    [numberB setTextColor:[UIColor brownColor]];
+    numberB.textAlignment = NSTextAlignmentCenter;
+    answer.backgroundColor = [UIColor clearColor];
+    answer.textAlignment = NSTextAlignmentCenter;
+    [answer setTextColor:[UIColor purpleColor]];
+    answer.font = [UIFont fontWithName:@"SegoePrint" size:30];
+    [answer setBackground:[UIImage imageNamed:@"border"]];
+    answer.delegate = self;
+    answer.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    answer.tag = 1;
+    
+    unsigned int randomA = arc4random()%20;
+    unsigned int randomB = arc4random()%20;
+    resultNum = randomA+randomB;
+    [numberA setText:[NSString stringWithFormat:@"%d",randomA]];
+    [numberB setText:[NSString stringWithFormat:@"%d",randomB]];
+    
+    //    [tmpCustomView addSubview:lockedInAlert];
+    [tmpCustomView addSubview:title];
+    [tmpCustomView addSubview:cancelInAlert];
+    //    [cancelInAlert setHidden:YES];
+    [tmpCustomView addSubview:wrongAnswer];
+    [wrongAnswer setHidden:YES];
+    [tmpCustomView addSubview:numberA];
+    [tmpCustomView addSubview:numberB];
+    [tmpCustomView addSubview:plus];
+    [tmpCustomView addSubview:equals];
+    [tmpCustomView addSubview:answer];
+    
+    
+    CustomIOS7AlertView *alert = [[CustomIOS7AlertView alloc] init];
+    [alert setButtonTitles:[NSMutableArray arrayWithObjects:nil]];
+    alert.backgroundColor = [UIColor whiteColor];
+    
+    [alert setContainerView:tmpCustomView];
+    
+    self.lockedAlert = alert;
+    [alert show];
+    
+    
+    [answer becomeFirstResponder];
 
+}
 -(void)moreInfo
 {
     [CommonUtility tapSound:@"selectLevel" withType:@"mp3"];
@@ -901,17 +991,51 @@ bool levelLock[bigLevel];
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if([textField.text isEqualToString:[NSString stringWithFormat:@"%d",resultNum]])
+    if(textField.tag == 0)
     {
-        [self.lockedAlert close];
-        [self shareFunc];
-        
+        if([textField.text isEqualToString:[NSString stringWithFormat:@"%d",resultNum]])
+        {
+            [self.lockedAlert close];
+            [self shareFunc];
+            
+        }else
+        {
+            [cancelInAlert removeFromSuperview];
+            [self performSelector:@selector(redrawCancel) withObject:nil afterDelay:0.35];
+            //        [cancelInAlert setFrame:CGRectMake(105, 145, 90, 47)];
+            //        [self.lockedAlert addSubview:cancelInAlert];
+            
+            [wrongAnswer setHidden:NO];
+            
+        }
     }else
     {
-        [wrongAnswer setHidden:NO];
-        [cancelInAlert setHidden:NO];
+        if([textField.text isEqualToString:[NSString stringWithFormat:@"%d",resultNum]])
+        {
+            [self.lockedAlert close];
+            [self moreInfo];
+            
+
+            
+        }else
+        {
+            [cancelInAlert removeFromSuperview];
+            [self performSelector:@selector(redrawCancel) withObject:nil afterDelay:0.35];
+            //        [cancelInAlert setFrame:CGRectMake(105, 145, 90, 47)];
+            //        [self.lockedAlert addSubview:cancelInAlert];
+            
+            [wrongAnswer setHidden:NO];
+            
+        }
+
+        
     }
     [textField resignFirstResponder];
     return YES;
+}
+-(void)redrawCancel
+{
+    [cancelInAlert setFrame:CGRectMake(170, 145, 90, 47)];
+    [tmpCustomView addSubview:cancelInAlert];
 }
 @end

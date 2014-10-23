@@ -637,7 +637,6 @@
 		0B851AB219EA4FAF00C1FC86 /* wronganswer.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B851AAC19EA4FAF00C1FC86 /* wronganswer.png */; };
 		0B851AB519EA531800C1FC86 /* +.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B851AB319EA531800C1FC86 /* +.png */; };
 		0B851AB619EA531800C1FC86 /* =.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B851AB419EA531800C1FC86 /* =.png */; };
-		0B851AB819EA57D200C1FC86 /* border.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B851AB719EA57D200C1FC86 /* border.png */; };
 		0B851B0D19EA5D4F00C1FC86 /* FacebookConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B851AEE19EA5D4F00C1FC86 /* FacebookConnection.framework */; };
 		0B851B0E19EA5D4F00C1FC86 /* QQConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B851AEF19EA5D4F00C1FC86 /* QQConnection.framework */; };
 		0B851B0F19EA5D4F00C1FC86 /* QZoneConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B851AF019EA5D4F00C1FC86 /* QZoneConnection.framework */; };
@@ -658,6 +657,7 @@
 		0B851B1E19EA5D4F00C1FC86 /* ShareSDKiPhoneDefaultShareViewUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0B851B0A19EA5D4F00C1FC86 /* ShareSDKiPhoneDefaultShareViewUI.bundle */; };
 		0B851B1F19EA5D4F00C1FC86 /* ShareSDKiPhoneDefaultShareViewUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B851B0B19EA5D4F00C1FC86 /* ShareSDKiPhoneDefaultShareViewUI.framework */; };
 		0B851B2019EA5D4F00C1FC86 /* ShareSDKShareActionSheet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B851B0C19EA5D4F00C1FC86 /* ShareSDKShareActionSheet.framework */; };
+		0B851B2219EAA9C800C1FC86 /* border.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B851B2119EAA9C800C1FC86 /* border.png */; };
 		0B95438419AE159C00F34CDF /* QuestionMarkBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B95438319AE159C00F34CDF /* QuestionMarkBlue.png */; };
 		0B95439A19AE19D000F34CDF /* b5.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B95438B19AE19D000F34CDF /* b5.png */; };
 		0B95439B19AE19D000F34CDF /* b5h.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B95438C19AE19D000F34CDF /* b5h.png */; };
@@ -1514,7 +1514,6 @@
 		0B851AAC19EA4FAF00C1FC86 /* wronganswer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wronganswer.png; sourceTree = "<group>"; };
 		0B851AB319EA531800C1FC86 /* +.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "+.png"; sourceTree = "<group>"; };
 		0B851AB419EA531800C1FC86 /* =.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "=.png"; sourceTree = "<group>"; };
-		0B851AB719EA57D200C1FC86 /* border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = border.png; sourceTree = "<group>"; };
 		0B851AEE19EA5D4F00C1FC86 /* FacebookConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookConnection.framework; sourceTree = "<group>"; };
 		0B851AEF19EA5D4F00C1FC86 /* QQConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QQConnection.framework; sourceTree = "<group>"; };
 		0B851AF019EA5D4F00C1FC86 /* QZoneConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QZoneConnection.framework; sourceTree = "<group>"; };
@@ -1539,6 +1538,7 @@
 		0B851B0A19EA5D4F00C1FC86 /* ShareSDKiPhoneDefaultShareViewUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShareSDKiPhoneDefaultShareViewUI.bundle; sourceTree = "<group>"; };
 		0B851B0B19EA5D4F00C1FC86 /* ShareSDKiPhoneDefaultShareViewUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKiPhoneDefaultShareViewUI.framework; sourceTree = "<group>"; };
 		0B851B0C19EA5D4F00C1FC86 /* ShareSDKShareActionSheet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKShareActionSheet.framework; sourceTree = "<group>"; };
+		0B851B2119EAA9C800C1FC86 /* border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = border.png; sourceTree = "<group>"; };
 		0B95438319AE159C00F34CDF /* QuestionMarkBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QuestionMarkBlue.png; sourceTree = "<group>"; };
 		0B95438B19AE19D000F34CDF /* b5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b5.png; sourceTree = "<group>"; };
 		0B95438C19AE19D000F34CDF /* b5h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b5h.png; sourceTree = "<group>"; };
@@ -2020,7 +2020,7 @@
 				0B95439719AE19D000F34CDF /* b1.png */,
 				0B851AB319EA531800C1FC86 /* +.png */,
 				0B851AB419EA531800C1FC86 /* =.png */,
-				0B851AB719EA57D200C1FC86 /* border.png */,
+				0B851B2119EAA9C800C1FC86 /* border.png */,
 				0B851AA919EA4FAF00C1FC86 /* 错误答案.png */,
 				0B851AAA19EA4FAF00C1FC86 /* 家长控制.png */,
 				0B851AAB19EA4FAF00C1FC86 /* Grown-upsOnly.png */,
@@ -3273,7 +3273,6 @@
 				0B774EEC19D597A800D67124 /* level7-4.png in Resources */,
 				0B774EE219D597A800D67124 /* level5-4.png in Resources */,
 				0BF7F11C19A2332300E73AB2 /* goComment.png in Resources */,
-				0B851AB819EA57D200C1FC86 /* border.png in Resources */,
 				0B774F2319D597A800D67124 /* level18-3.png in Resources */,
 				0B774EF919D597A800D67124 /* level10-2.png in Resources */,
 				0B774EA319D597A800D67124 /* an3-5.png in Resources */,
@@ -3529,6 +3528,7 @@
 				0B774EC519D597A800D67124 /* an3-39.png in Resources */,
 				0B774EA219D597A800D67124 /* an3-4.png in Resources */,
 				0B774E7819D597A800D67124 /* an2-12.png in Resources */,
+				0B851B2219EAA9C800C1FC86 /* border.png in Resources */,
 				0B21D01E19B3527C00B02968 /* orange.wav in Resources */,
 				0B774EC319D597A800D67124 /* an3-37.png in Resources */,
 				0B774F0419D597A800D67124 /* level13-1.png in Resources */,

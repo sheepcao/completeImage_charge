@@ -25,6 +25,7 @@
 NSInteger resultNum;
 UIImageView *wrongAnswer;
 UIButton *cancelInAlert;
+UIView *tmpCustomView;
 
 -(int)countBabyLevel
 {
@@ -715,14 +716,14 @@ UIButton *cancelInAlert;
 {
     [CommonUtility tapSound:@"selectLevel" withType:@"mp3"];
     
-    UIView *tmpCustomView = [[UIView alloc] initWithFrame:CGRectMake(0, 0 , 300, 208)];
+    tmpCustomView = [[UIView alloc] initWithFrame:CGRectMake(0, 0 , 300, 208)];
     UIImageView *title = [[UIImageView alloc] initWithFrame:CGRectMake(77, 15, 146, 47)];
     
     
     wrongAnswer = [[UIImageView alloc] initWithFrame:CGRectMake(45, 145, 110, 40)];
     
     
-    cancelInAlert = [[UIButton alloc] initWithFrame:CGRectMake(170, 145, 90, 47)];
+    cancelInAlert = [[UIButton alloc] initWithFrame:CGRectMake(105, 145, 90, 47)];
     
     tmpCustomView.backgroundColor = [UIColor colorWithPatternImage:    [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"alertBackground" ofType:@"png"]]];
     
@@ -760,7 +761,7 @@ UIButton *cancelInAlert;
     numberB.font = [UIFont fontWithName:@"SegoePrint" size:30];
     [numberB setTextColor:[UIColor brownColor]];
     numberB.textAlignment = NSTextAlignmentCenter;
-    answer.backgroundColor = [UIColor whiteColor];
+    answer.backgroundColor = [UIColor clearColor];
     answer.textAlignment = NSTextAlignmentCenter;
     [answer setTextColor:[UIColor purpleColor]];
     answer.font = [UIFont fontWithName:@"SegoePrint" size:30];
@@ -796,6 +797,7 @@ UIButton *cancelInAlert;
     
     self.lockedAlert = alert;
     [alert show];
+    [answer becomeFirstResponder];
     
     
     
@@ -866,7 +868,7 @@ UIButton *cancelInAlert;
                          shareList:nil
                            content:publishContent
                      statusBarTips:NO
-                       authOptions:nil
+                       authOptions:authOptions
                       shareOptions: nil
                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
                                 if (state == SSResponseStateSuccess)
@@ -909,11 +911,21 @@ UIButton *cancelInAlert;
         
     }else
     {
+        [cancelInAlert removeFromSuperview];
+        [self performSelector:@selector(redrawCancel) withObject:nil afterDelay:0.35];
+        //        [cancelInAlert setFrame:CGRectMake(105, 145, 90, 47)];
+        //        [self.lockedAlert addSubview:cancelInAlert];
+
         [wrongAnswer setHidden:NO];
-        [cancelInAlert setHidden:NO];
+ 
     }
     [textField resignFirstResponder];
     return YES;
 }
 
+-(void)redrawCancel
+{
+    [cancelInAlert setFrame:CGRectMake(170, 145, 90, 47)];
+    [tmpCustomView addSubview:cancelInAlert];
+}
 @end
